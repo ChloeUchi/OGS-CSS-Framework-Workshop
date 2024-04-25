@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DatePicker, Radio, Checkbox, Divider, Switch, Form } from 'antd';
+import { DatePicker, Radio, Checkbox, Divider, Switch, Form, CheckboxProps } from 'antd';
 import { CheckboxValueType } from 'antd/es/checkbox/Group';
 import TextArea from 'antd/es/input/TextArea';
 
@@ -25,8 +25,10 @@ const LastPage: React.FC = () => {
     //     console.log(date, dateString);
     // };
 
-    const checkAll = plainOptions.length === checkedList.length;
-    const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
+
+
+    const checkAll = checklistOptions.length === checkedList.length;
+    const indeterminate = checkedList.length > 0 && checkedList.length < checklistOptions.length;
 
     const onChangeCheck = (list: CheckboxValueType[]) => {
         setCheckedList(list);
@@ -35,10 +37,13 @@ const LastPage: React.FC = () => {
         }
     };
 
-    const onCheckAllChange = (e: any) => {
+    // const onCheckAllChange = (e: any) => {
+    //     setCheckedList(e.target.checked ? checklistOptions : []);
+    // };
+
+    const onCheckAllChange: CheckboxProps['onChange'] = (e) => {
         setCheckedList(e.target.checked ? checklistOptions : []);
     };
-
     const handleOtherInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setOtherValue(e.target.value);
     };
@@ -61,16 +66,16 @@ const LastPage: React.FC = () => {
                     <p>Gender : </p>
                     <Radio.Group options={plainOptions} onChange={onChange1} value={value1} />
                 </div><br /> */}
-                <div className='flex gap-2'>
-                <p>Gender : </p>
-                <Form.Item
-                    name="gender"
-                    label=""
-                    rules={[{ required: true, message: 'Please select your gender' }]}
-                    
-                >
-                    <Radio.Group options={plainOptions} onChange={onChange1} className='flex'/>
-                </Form.Item>
+                <div className='flex gap-2 align-middle'>
+                    <span>Gender : </span>
+                    <Form.Item
+                        name="gender"
+                        label=""
+                        rules={[{ required: true, message: 'Please select your gender' }]}
+
+                    >
+                        <Radio.Group options={plainOptions} onChange={onChange1} className='flex' />
+                    </Form.Item>
                 </div>
                 <div className='flex flex-col justify-start content-start text-left'>
                     <p>งานอดิเรก</p>

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Button, FormProps, message, Steps, theme, Form} from 'antd';
+import { Button, FormProps, message, Steps, theme, Form } from 'antd';
 import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
 import LastPage from './components/LastPage';
@@ -70,9 +70,8 @@ const App: React.FC = () => {
             layout='vertical'
           >
             <div style={contentStyle}>
-
               <Steps current={current} items={items} />
-              <div>{steps[current].content}</div>
+              <div>{steps[current]?.content}</div>
               {/* <div>{steps[current].content}</div> */}
               <div style={{ marginTop: 24 }} className='flex justify-between'>
                 {current > 0 && (
@@ -86,7 +85,7 @@ const App: React.FC = () => {
                   </Button>
                 )}
                 {current === steps.length - 1 && (
-                  <Button className='w-[12em] h-[3em] bg-pink-600 text-white hover:bg-pink-400'  htmlType='submit'>
+                  <Button className='w-[12em] h-[3em] bg-pink-600 text-white hover:bg-pink-400' htmlType='submit'>
                     DONE
                   </Button>
                 )}
