@@ -4,6 +4,8 @@ import { Button, FormProps, message, Steps, theme, Form } from 'antd';
 import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
 import LastPage from './components/LastPage';
+import Counter from './components/Counter';
+import RegisterForm from './components/RegisterForm'
 
 type FieldType = {
   username?: string;
@@ -52,7 +54,7 @@ const App: React.FC = () => {
     borderRadius: token.borderRadiusLG,
     border: `1px dashed ${token.colorBorder}`,
   };
-
+  
   return (
     <>
       <div className='flex content-center justify-center place-items-center '>
@@ -72,7 +74,6 @@ const App: React.FC = () => {
             <div style={contentStyle}>
               <Steps current={current} items={items} />
               <div>{steps[current]?.content}</div>
-              {/* <div>{steps[current].content}</div> */}
               <div style={{ marginTop: 24 }} className='flex justify-between'>
                 {current > 0 && (
                   <Button className='w-[12em] h-[3em]  bg-orange-600 text-white hover:bg-orange-400' onClick={() => prev()}>
@@ -94,8 +95,31 @@ const App: React.FC = () => {
           </Form>
         </div>
       </div>
+      <br />
+      <div className='text-[2em] text-white font-extrabold flex justify-center mt-5'><Counter/></div><br />
+      <div className='bg-white p-[2em] border-2 rounded-xl'>
+        <h1 className='flex justify-center text-[1.5em] font-bold'>Register Form</h1>
+        <RegisterForm/>
+        </div>
     </>
   );
 };
 
 export default App;
+
+
+// import React, { useEffect } from 'react'
+// import { useSelector } from 'react-redux'
+// import { RootState } from './store/store';
+
+// function App() {
+//   const register = useSelector((state:RootState) => state.register.value);
+//   useEffect(() => {
+//     console.log(register);
+//   },[register]);
+//   return (
+//     <div>App</div>
+//   )
+// }
+
+// export default App
